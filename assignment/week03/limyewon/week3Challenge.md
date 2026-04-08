@@ -6,6 +6,7 @@
 # 2. 웹 요청 분석
 
 - HTTP 요청 중 ".pdf" 파일을 다운로드하는 요청을 찾으시오.
+GET	/ebook/src/viewer/download.php?host=main&site=20220430_101634_1&no=1 HTTP/1.1
 
 - 전체 URL (http:// 포함)을 작성하시오. -> [http://www.yongin.go.kr/ebook/src/viewer/download.php?host=main&site=20220430_101634_1&no=1]
 
