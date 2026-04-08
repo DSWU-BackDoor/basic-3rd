@@ -20,10 +20,11 @@ GET /ebook/src/viewer/download.php?host=main&site=20250410_095137&no=1 HTTP/1.1
 application/pdf
 
 - 파일 크기는 얼마인가? 
-25433559
+867700
 
 - 파일 이름은 무엇인가?
 25_%EC%9A%A9%EC%9D%B8%EC%83%9D%ED%99%9C%EA%B0%80%EC%9D%B4%EB%93%9C%EB%B6%81_%EC%9B%B9%EC%9A%A9_0409.pdf
+25_용인생활가이드북_웹용_0409.pdf
 
 # 4. 파일 복구
 
