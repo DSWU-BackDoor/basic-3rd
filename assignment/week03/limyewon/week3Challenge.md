@@ -30,3 +30,4 @@ GET	/ebook/src/viewer/download.php?host=main&site=20220430_101634_1&no=1 HTTP/1.
 5. 복구된 파일이 깨지지 않았는지, 의도한 데이터가 맞는지 최종 확인한다. PDF 리더나 이미지 뷰어로 파일을 열어 데이터 유실 여부를 확인하고, 필요 시 Parameters 탭에서 Content-Type 등을 대조하여 서버가 보낸 원본 형식과 일치하는지 검토한다.
 
 -  복구 과정 화면을 캡처하여 첨부하시오.
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/2992f631-3c81-4747-903f-442b2716b616" />
