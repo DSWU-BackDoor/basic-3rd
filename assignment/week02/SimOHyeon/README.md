@@ -18,10 +18,10 @@ HTTPS를 HTTP로 변경하여 패킷이 보이도록 하였다.
 
 ### 4. PDF 파일 다운로드  
 다운로드 과정에서 경고창이 발생하였고, 계속 버튼을 눌러 진행하였다.
-<img width="2879" height="1475" alt="Image" src="https://github.com/user-attachments/assets/ab925e9f-70fb-4a9f-a113-ae03d9d37fb0" />
+<img width="2880" height="1704" alt="Image" src="https://github.com/user-attachments/assets/149e1a31-726d-412a-a6e5-828a5327c09b" />
 
 ### 5. 상태 코드 분석  
-<img width="1604" height="978" alt="Image" src="https://github.com/user-attachments/assets/96acd0dc-2e91-4411-a961-1557841b27e8" />
+<img width="1604" height="978" alt="Image" src="https://github.com/user-attachments/assets/b8f5a9e2-ddfc-409f-9323-47c788afd6fe" />
 
 - 2xx: 정상 응답 (200 OK)  
 - 3xx: 리다이렉션 발생 (302)  
