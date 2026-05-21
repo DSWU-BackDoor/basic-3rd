@@ -8,9 +8,12 @@
 
 ## 1-2. 사진
 ### 1-2-1. SQL Injection
+<img width="500" alt="스크린샷 2026-05-21 122851" src="https://github.com/user-attachments/assets/84e9b345-63c6-4d1e-9d30-61a521020a52" />
 
 
 ### 1-2-2. URL 접근 제한 미흡 취약점
+<img width="500" alt="스크린샷 2026-05-21 132136" src="https://github.com/user-attachments/assets/8f7b1a7e-07c9-497d-ab58-2deb4ee96caf" />
+
 
 
 ## 1-3. 풀이
