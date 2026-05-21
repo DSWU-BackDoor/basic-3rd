@@ -37,3 +37,5 @@
 
 
 # 2. VirtualBox & Ubuntu 설치 후 스크린샷
+<img width="450" alt="스크린샷 2026-05-21 165844" src="https://github.com/user-attachments/assets/386142f8-5c00-4273-9157-b051ba958706" />
+
