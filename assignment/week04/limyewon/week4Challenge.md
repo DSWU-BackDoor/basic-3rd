@@ -1,4 +1,6 @@
 # 1. 캡쳐 사진
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/904ccf97-f3de-44a5-8c20-395ddd269f7e" />
+
 
 
 # 2. 진행 과정
