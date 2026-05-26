@@ -11,6 +11,6 @@ file-download-1
 
 취약점 원인
     : 사용자가 입력한 파일명을 검증 없이 경로에 연결하여 사용
-        => ../를 이용한 상위 디렉토리 접근 가능
+        => ../를 이용한 상위 디렉토리 접근 가능 
         
  <img width="1128" height="584" alt="Image" src="https://github.com/user-attachments/assets/b981cf0c-b13c-4a7c-b8d7-dd04dee59ade" />       
