@@ -7,7 +7,7 @@ XSS 취약점이란 웹 어플리케이션에서 사용자 입력 값에 대한 
 
 ## 1-2. 사진
 
-<img width="1618" height="352" alt="Image" src="https://private-user-images.githubusercontent.com/203046560/597476842-9434faac-8a43-4f0a-806f-369605dc6e7b.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Nzk2OTM0ODQsIm5iZiI6MTc3OTY5MzE4NCwicGF0aCI6Ii8yMDMwNDY1NjAvNTk3NDc2ODQyLTk0MzRmYWFjLThhNDMtNGYwYS04MDZmLTM2OTYwNWRjNmU3Yi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDUyNVQwNzEzMDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jOGIzZGZhNGRkYmU3NDRmNjA5ZDkzZjE0MWU1YWVkZTA1ZWI4YjEyMDIzMmM2NjUzOGE4MzM2MDNmNDFhNWU4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.xvKxo1FYTejnHOJ-55O7BydccfbymZW1y-YGGKNqKWs" />
+<img width="1645" height="464" alt="Image" src="https://github.com/user-attachments/assets/b1717f20-d2f2-4807-92b2-bf21e4948cb6" />
 
 ## 1-3. 풀이
 
@@ -21,4 +21,4 @@ XSS 취약점이란 웹 어플리케이션에서 사용자 입력 값에 대한 
 
 # 2. VirtualBox & Ubuntu 설치 후 스크린샷
 
-<img width="450" alt="스크린샷 2026-05-21 165844" src="https://github.com/user-attachments/assets/386142f8-5c00-4273-9157-b051ba958706" />
+<img width="2055" height="1530" alt="Image" src="https://github.com/user-attachments/assets/c38e1594-3af3-4ab4-a4ad-40e3a21c24dd" />
