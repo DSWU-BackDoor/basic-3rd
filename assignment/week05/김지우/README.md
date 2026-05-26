@@ -1,5 +1,15 @@
+
 1. Virtual Box 및 Ubuntu 설치
 <img width="2464" height="1572" alt="Image" src="https://github.com/user-attachments/assets/8f61a6ff-5815-4017-be1c-6324e5feb4b0" />
+이번 실습에서는 VirtualBox 환경에서 Ubuntu를 설치하는 과정에서 발생한 오류를 해결하는 경험을 다루었다. 초기에는 최신 버전인 Ubuntu 26.04를 사용하여 가상머신에 설치를 진행하였으나, 부팅 과정에서 vmwgfx seems to be running on an unsupported hypervisor라는 에러 메시지가 발생하며 정상적으로 운영체제가 실행되지 않았다. 이후 화면이 멈추거나 검은 화면만 출력되는 문제가 지속적으로 발생하여 설치가 불가능한 상태였다.
+
+해당 문제의 원인을 분석한 결과, vmwgfx는 VMware 환경에서 사용하는 그래픽 드라이버인데, 이를 VirtualBox 환경에서 실행하려 하면서 호환성 문제가 발생한 것으로 판단하였다. 특히 Ubuntu 26.04와 같은 최신 버전은 가상화 환경과의 드라이버 호환성이 완전히 검증되지 않은 경우가 있어 이러한 충돌이 발생할 수 있다.
+
+문제를 해결하기 위해 여러 가지 방법을 시도하였다. 먼저 VirtualBox의 디스플레이 설정에서 Graphics Controller를 VMSVGA로 변경하고 3D Acceleration을 비활성화하는 등 그래픽 설정을 조정하였다. 이후 Safe Graphics 모드를 통해 최소한의 그래픽 드라이버로 부팅을 시도하였으나, 여전히 검은 화면에서 멈추는 현상이 발생하였다. 추가적으로 GRUB 설정에서 nomodeset 옵션을 적용하여 그래픽 드라이버 로딩을 제한하는 방법도 고려하였으나, 근본적인 해결에는 이르지 못하였다.
+
+결과적으로 해당 문제는 단순한 설정 오류가 아니라 Ubuntu 26.04 버전과 VirtualBox 환경 간의 구조적인 호환성 문제로 판단하였다. 이에 따라 보다 안정적인 환경을 위해 Ubuntu 22.04 LTS 버전으로 변경하여 설치를 다시 진행하였다. 그 결과 별다른 오류 없이 정상적으로 부팅 및 설치가 완료되었으며, 이후 시스템도 안정적으로 동작하였다.
+
+
 
 2. 워게임
 <img width="2879" height="1799" alt="Image" src="https://github.com/user-attachments/assets/90f868ca-b2bb-4b41-930d-f5ac070fba60" />
