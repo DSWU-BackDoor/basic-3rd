@@ -1,0 +1,16 @@
+file-download-1
+
+- 파일 읽기 기능: 사용자가 입력한 파일 이름 으로 uploads/입력값 형태
+- 읽기 기능에서는 .. 제한 X
+    => 확인 위해 hello 파일 업로드 후 읽기 시도
+
+/read?name=../uploads/hello 요청 -> 파일 내용 정상 출력
+    => ../ 필터링되지 않으며 디렉토리 탈출이 가능함을 확인
+
+=> 파라미터 값 /read?name=../flag.py 로 설정해 flag 획득
+
+취약점 원인
+    : 사용자가 입력한 파일명을 검증 없이 경로에 연결하여 사용
+        => ../를 이용한 상위 디렉토리 접근 가능 
+        
+ <img width="1128" height="584" alt="Image" src="https://github.com/user-attachments/assets/b981cf0c-b13c-4a7c-b8d7-dd04dee59ade" />       
