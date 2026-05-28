@@ -11,7 +11,7 @@
 
 ## 2. Level 0 -> Level 1
 <img width="400" alt="스크린샷 2026-05-28 180811" src="https://github.com/user-attachments/assets/814137cb-1af2-4880-85e4-66602d54dd6e" />
-<img width="1774" height="1141" alt="스크린샷 2026-05-28 180831" src="https://github.com/user-attachments/assets/a79dd53e-306d-429c-806b-333b66b2f21c" />
+<img width="400" alt="스크린샷 2026-05-28 180831" src="https://github.com/user-attachments/assets/a79dd53e-306d-429c-806b-333b66b2f21c" />
 
 - 다음 비밀번호는 bandit0 계정의 홈 디렉터리에 있는 readme 파일에 저장되어 있음
 - ```ls``` 명령어를 통해 디렉터리 안에 readme가 있는지 확인
