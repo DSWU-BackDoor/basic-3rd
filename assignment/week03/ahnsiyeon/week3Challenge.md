@@ -6,7 +6,7 @@ TCP(Transmission Control Protocol), HTTP(Hypertext Transfer Protocol), DNS(Domai
 # 2. 웹 요청 분석
 
 - HTTP 요청 중 ".pdf" 파일을 다운로드하는 요청을 찾으시오.
-17119	137.142657	2001:2d8:e3af:a878:f06c:dbc9:9ff9:9caa	64:ff9b::1b65:775a	HTTP	1767	GET /ebook/src/viewer/download.php?host=main&site=20220430_101634_1&no=1 HTTP/1.1 
+GET /ebook/src/viewer/download.php?host=main&site=20220430_101634_1&no=1 HTTP/1.1 
 
 - 전체 URL (http:// 포함)을 작성하시오.
 http://www.yongin.go.kr/ebook/src/viewer/download.php?host=main&site=20220430_101634_1&no=1
