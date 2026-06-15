@@ -1,6 +1,31 @@
 # week06 과제
 
-## Level 0→1
+## 사전 지식
+<리눅스 명령어>
+
+
+(1) 디렉터리 관련 명령어
+
+pwd : 현재 작업 디렉터리 확인
+
+cd : 작업 디렉터리 변경
+
+ls : 디렉터리 내용 목록 출력
+
+
+(2) 파일 관련 명령어
+
+cat : 텍스트 파일 내용 출력
+
+
+(3) 파일 검색 명령어
+
+find : 조건에 맞는 파일 검색 ex. find [검색 위치] [-검색조건] [-동작]
+
+grep : 파일 내용에서 패턴 검색 ex. grep [-옵션] [패턴] [파일이름]
+
+
+## Level 0→1 // ssh -p 2220 bandit0@bandit.labs.overthewire.org
 Q. The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH.
 
 
@@ -8,7 +33,7 @@ ls로 현재 디렉터리 파일 확인하면 readme 파일이 보인다. cat re
 ![실행 결과](01.png)
 
 
-## Level 1→2
+## Level 1→2 // ssh -p 2220 bandit1@bandit.labs.overthewire.org
 Q. The password for the next level is stored in a file called - located in the home directory
 
 
@@ -16,7 +41,7 @@ Q. The password for the next level is stored in a file called - located in the h
 ![실행 결과](02.png)
 
 
-## Level 2→3
+## Level 2→3 // ssh -p 2220 bandit2@bandit.labs.overthewire.org
 Q. The password for the next level is stored in a file called --spaces in this filename-- located in the home directory
 
 
@@ -24,7 +49,7 @@ Q. The password for the next level is stored in a file called --spaces in this f
 ![실행 결과](03.png)
 
 
-## Level 3→4
+## Level 3→4 // ssh -p 2220 bandit3@bandit.labs.overthewire.org
 Q. The password for the next level is stored in a hidden file in the inhere directory.
 
 
@@ -32,7 +57,7 @@ inhere 디렉터리의 숨김 파일을 찾아야 하기 때문에 cd inhere을 
 ![실행 결과](04.png)
 
 
-## Level 4→5
+## Level 4→5 // ssh -p 2220 .bandit4@bandit.labs.overthewire.org
 Q. The password for the next level is stored in the only human-readable file in the inhere directory. 
 
 
