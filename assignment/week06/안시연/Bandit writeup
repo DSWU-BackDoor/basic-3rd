@@ -1,0 +1,71 @@
+OverTheWire Bandit
+
+0
+ssh -p 2220 bandit0@bandit.labs.overthewire.org
+ssh(secure shell): 원격 접속
+-p 2220: 포트 번호
+bandit0: 사용자 이름
+@: ~에 접속함
+bandit.labs.overthewire.org: 서버 주소
+
+0 -> 1
+home 디렉토리의 readme 파일
+ls : 파일확인
+cat readme : 파일 내용 출력
+pw: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+1 -> 2
+home 디렉토리의 - 파일
+-는 특수기호이기 때문에, 파일 경로까지 명시해야 출력 가능
+상대 경로로 나타내기 위해 현재 디렉토리를 의미하는 ./ 사용
+cat ./-
+pw: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+
+2 -> 3
+home 디렉토리의 --spaces in this filename--
+cat 명령어는 한번에 여러 개의 파일 출력 가능 
+-> 공백 그대로 사용 시 이름이 spaces, in, this, filename인 4개의 파일을 출력하는 것으로 인식.
+파일에 공백이 포함되어있고 -로 시작되었기 때문에 경로 표시, 큰따옴표로 파일명 묶기
+cat ./"--spaces in this filename--"
+공백 앞에 \ 붙이는 방법도 가능 (cat ./--spaces\ in\ this\ filename--)
+pw: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+
+3 -> 4
+inhere 디렉토리 안의 숨겨진 파일
+ls -l : inhere 디렉토리 확인
+cd inhere : inhere 디렉토리로 이동
+ls -a : 숨겨진 파일까지 출력 -> ...Hiding-From-You 파일 확인
+cat ...Hiding-From-You
+pw: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+
+4->5
+cd inhere: inhere 디렉토리로 이동
+ls -l : 디렉토리 안의 파일 확인
+-> -file00부터 -file09까지 열개의 파일이 있다.
+이 중 사람이 읽을 수 있는 파일에 패스워드가 저장되어 있기 때문에
+file 명령어로 파일 종류 확인, *로 디렉토리 안 모든 파일 한 번에 확인 가능
+file ./*
+-> -file07이 ASCII text임을 확인
+cat ./ -file07
+pw: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+5->6
+cd inhere : inhere 디렉토리로 이동
+ls -al : 디렉토리 확인 -> mabyhere 00~17 디렉토리 확인
+이 중 크기가 1033바이트인 파일 검색 필요
+find ./ -size 1033c
+* find inhere -size 1033c 안되는 이유: 이미 inhere 디렉토리에 위치해 있기 때문.
+   이건 현재 디렉토리 안에서 inhere 디렉토리를 또 찾으라는 의미
+find 결과 ./maybehere07/.file2
+cat maybehere07/.file2
+pw: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+6->7
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+find: 조건에 맞는 파일 검색
+/ : 최상위 디렉토리
+-user bandit7 -group bandit6 -size 33c : 검색 옵션
+이대로만 검색하면 Permission denied 항목이 많이 출력됨
+-> 오류 메시지가 뜨지 않은 파일만 보기 위해 2>/dev/null 사용
+cat /var/lib/dpkg/info/bandit7.password
+pw: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
