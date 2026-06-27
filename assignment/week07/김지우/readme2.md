@@ -16,6 +16,7 @@
 
  이어서 ```b *main +54```와 ```r``` 통해 브레이크포인트를 설정해 실행한다. scanf 호출 직전에 브레이크 포인트를 걸고, r로 실행하는 코드이다. 
  (b: 특정 주소에 브레이크포인트를 설정, 도달하면 일시 정지)
+ 
  <img width="400" alt="Image" src="https://github.com/user-attachments/assets/6837d221-7ca6-4e31-b095-9a329913bab5" />
 
  실행 후 레지스터 부분을 확인해보면
