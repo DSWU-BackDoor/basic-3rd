@@ -69,6 +69,7 @@ padding = b'A' * 0x30 + b'B' * 0x8; payload = padding + p64(0x4006aa)과 같이 
 ![실행 결과](06.png)
 ![실행 결과](07.png)
 
+
 ## 플래그 획득하기
 ls 를 입력해서 파일 목록을 확인 후 cat flag로 플래그를 얻는다. 
 ![실행 결과](08.png)
