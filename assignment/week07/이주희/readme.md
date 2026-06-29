@@ -43,4 +43,4 @@
 5. 플래그 획득 
 <img width="890" height="454" alt="Image" src="https://github.com/user-attachments/assets/f72a9652-5f94-492c-9c93-6b45ae71056c" />
 -'python3 exploit.py'
--파일 목록 확인 후 flag 파일로 플래그 얻기 
+-파일 목록 확인 후 flag 파일로 플래그 얻기  
